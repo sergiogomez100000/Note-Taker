@@ -51,8 +51,10 @@ app.post("/api/notes", function(req,res){
         JSON.stringify(notes);
         fs.promises.writeFile("./db/db.json", notes, "utf8",function(err,data){
             res.send(notes);
-        
         })
+        // .catch((error) => {
+        //     console.error(error);
+        //   });
     })
     //parse out array
     //push to array
