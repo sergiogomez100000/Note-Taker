@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { rmSync } = require("fs");
 const store = require("../db/store.js");
+const notes = "";
 // API routes
 //get all notes
 router.get("/notes", function(req,res){
@@ -13,6 +14,7 @@ router.get("/notes", function(req,res){
     //     console.error(error);
     //        });
     // res.json(notes); 
+    console.log(res)
     store.getNotes()
         .then(notes => res.json(notes))
         .catch(err => res.status(500).json(err))
