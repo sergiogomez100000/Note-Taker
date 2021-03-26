@@ -18,8 +18,8 @@ router.get("/notes", function(req,res){
         .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/notes", function(req,res){
-    store.addNotes()
+router.post("/notes", function(req,res){
+    store.saveNotes(notes)
     .then(notes => res.json(notes))
     .catch(err => res.status(500).json(err))
 //     //creates a note from req.body; save note
