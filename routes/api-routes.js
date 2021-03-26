@@ -52,8 +52,17 @@ router.post("/notes", function(req,res){
 //     res.json(note);
 });
 
-//store.getNotes
-    // .then()
-    // .catch()
-
+router.delete("/notes/:id", function (req, res){
+    //Delete a note based off id
+    fs.readFile(__dirname + "/db/db.json", 'utf8', function (err, data) {   
+        if (err) throw err      
+        const notes = JSON.parse(data);    
+        const {id} = req.params;     
+        const newNotes = notes.filter((note) => note.id !== +id);       
+        fs.writeFile(__dirname + '/db/db.json', JSON.stringify(newNotes), function (err, data) {             
+            if (err) throw err
+            res.end("I hope it worked")         
+        });     
+    });
+});
 module.exports = router;
