@@ -21,7 +21,8 @@ router.get("/notes", function(req,res){
 });
 
 router.post("/notes", function(req,res){
-    store.saveNotes(notes)
+    console.log(req.body)
+    store.saveNote(req.body)
     .then(notes => res.json(notes))
     .catch(err => res.status(500).json(err))
 //     //creates a note from req.body; save note
